@@ -1,13 +1,12 @@
-export default async function Comments({ postSlug }: { postSlug: string }) {
-  const WEBSITE_URL = "http://localhost:3000";
+import { WEB_SITE } from "config";
 
+export default async function Comments({ postSlug }: { postSlug: string }) {
   let comments = [];
 
   try {
-    const commentsResult = await fetch(
-      `${WEBSITE_URL}/api/comments/${postSlug}`,
-      { next: { revalidate: 5 } }
-    );
+    const commentsResult = await fetch(`${WEB_SITE}/api/comments/${postSlug}`, {
+      next: { revalidate: 5 },
+    });
     const response = await commentsResult.json();
     console.log(response);
     comments = response.comments.rows;
@@ -20,10 +19,10 @@ export default async function Comments({ postSlug }: { postSlug: string }) {
       <h2>| Comments |</h2>
       <h3>Leave a comment: </h3>
       <form action={`/api/comments/${postSlug}`} method="POST">
-        <label htmlFor="surname">Name:</label>
+        <label htmlFor="username">Name:</label>
         <input type="text" name="username" />
         <label htmlFor="comment">Your comment</label>
-        <textarea name="username" cols={30} rows={10} />
+        <textarea name="comment" cols={30} rows={10} />
         <button type="submit">send comment</button>
       </form>
       {/*@ts-ignore*/}
