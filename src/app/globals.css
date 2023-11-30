@@ -3,17 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 0, 255, 0; /* Change to green */
+  --background-start-rgb: 0, 0, 0; /* Change to black */
+  --background-end-rgb: 0, 0, 0; /* Change to black */
 }
 
 body {
@@ -24,4 +16,42 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.text-center {
+  writing-mode: inherit;
+}
+
+h2 {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+p {
+  font-size: 2rem;
+}
+
+Img {
+  width: 300px;
+}
+
+.blog-post-content img {
+  margin-top: 30px;
+  display: inline-block;
+  margin-right: 10px; /* Adjust margin as needed for spacing */
+  width: 400px; /* Set a fixed width */
+  height: 600px;
+  object-fit: cover; /* Maintain aspect ratio and cover container */
+}
+
+.imgball {
+  width: 200px;
+  height: 200px;
+  animation: MoveHorizontally 5s linear infinite;
+}
+
+@keyframes MoveHorizontally {
+  50% {
+    transform: translateX(calc(95vw - 100px)) rotate(180deg);
+  }
 }
